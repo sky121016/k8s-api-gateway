@@ -4,3 +4,21 @@ server:
 jwt:
   header: Authorization
   secret-key: AADfaskllewqwertyuiopasdfghjklm32dsfasdTG764Gdslkj298GsWg86G
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes: # 라우팅 설정
+          - id: backend-user
+            predicates: # 라우팅 조건
+              - Path=/api/user/**
+            uri: lb://backend-user
+            filters:
+              - AddAuthenticationHeader
+          - id: backend-alim
+            predicates: # 라우팅 조건
+              - Path=/api/alim/**
+            uri: lb://backend-alim
+            filters:
+              - AddAuthenticationHeader
