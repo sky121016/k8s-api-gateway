@@ -19,4 +19,6 @@ spring:
             predicates:
               - Path=/api/post/**
   config:
-    import: file:/etc/config/application-dev.yml
+    import:
+      - file:/etc/config/application-dev.yml
+      - file:/etc/config/application-secret.yml
